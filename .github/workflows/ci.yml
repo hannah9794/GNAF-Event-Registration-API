@@ -1,4 +1,4 @@
-name: GNAF API Continuous Integration
+name: GNAF API CI/CD Pipeline
 
 on:
   push:
@@ -13,11 +13,17 @@ permissions:
   contents: read
 
 jobs:
+
+  # -------------------------------------------------------
+  # CONTINUOUS INTEGRATION
+  # -------------------------------------------------------
+
   test:
     name: Run Python Tests
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -38,3 +44,87 @@ jobs:
 
       - name: Run unit tests
         run: pytest -v
+
+
+  # -------------------------------------------------------
+  # CONTINUOUS DEPLOYMENT
+  # -------------------------------------------------------
+
+  deploy:
+    name: Deploy to AWS Lambda
+
+    needs: test
+
+    if: |
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GNAF-GitHub-Deploy
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Create Lambda deployment package
+        run: |
+          python -m zipfile -c lambda-package.zip lambda_function.py
+          python -m zipfile -l lambda-package.zip
+
+      - name: Deploy code to Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name "${{ vars.LAMBDA_FUNCTION_NAME }}" \
+            --zip-file fileb://lambda-package.zip \
+            --region "${{ vars.AWS_REGION }}"
+
+      - name: Confirm Lambda deployment completed
+        run: |
+          for attempt in {1..60}; do
+
+            STATUS=$(aws lambda get-function-configuration \
+              --function-name "${{ vars.LAMBDA_FUNCTION_NAME }}" \
+              --region "${{ vars.AWS_REGION }}" \
+              --query 'LastUpdateStatus' \
+              --output text)
+
+            echo "Lambda deployment status: $STATUS"
+
+            if [ "$STATUS" = "Successful" ]; then
+              echo "Lambda deployment completed successfully."
+              exit 0
+            fi
+
+            if [ "$STATUS" = "Failed" ]; then
+              echo "Lambda deployment failed."
+
+              aws lambda get-function-configuration \
+                --function-name "${{ vars.LAMBDA_FUNCTION_NAME }}" \
+                --region "${{ vars.AWS_REGION }}" \
+                --query '[LastUpdateStatusReason,LastUpdateStatusReasonCode]' \
+                --output text
+
+              exit 1
+            fi
+
+            sleep 2
+          done
+
+          echo "Timed out waiting for Lambda deployment."
+          exit 1
