@@ -1745,4 +1745,563 @@ p {
 
         box-shadow: none;
     }
+}/* =========================================================
+   GNAF 2026 FINAL READABILITY & HEADER IMPROVEMENTS
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+
+.site-header {
+    background: #fffaf0;
+    border-bottom: 1px solid rgba(16, 45, 32, 0.12);
+}
+
+.header-inner {
+    min-height: 92px;
+    gap: 30px;
+}
+
+
+/* GNAF CIRCLE */
+
+.brand-mark {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #153d29;
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    box-shadow:
+        0 6px 16px
+        rgba(16, 45, 32, 0.20);
+}
+
+
+/* MAIN ORGANISATION TITLE */
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-text strong {
+    color: #153d29;
+
+    font-size: 23px;
+    line-height: 1.2;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+.brand-text span {
+    color: #c98a18;
+
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+
+/* HEADER NAVIGATION */
+
+.main-nav a {
+    color: #153d29;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.main-nav a:hover {
+    color: #c98a18;
+}
+
+
+/* REGISTER BUTTON IN HEADER */
+
+.main-nav .header-register-btn {
+    background: #e0a52b;
+    color: #102d20;
+
+    padding: 13px 24px;
+
+    border-radius: 999px;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.main-nav .header-register-btn:hover {
+    background: #edba50;
+    color: #102d20;
+
+    transform: translateY(-2px);
+}
+
+
+/* ---------------------------------------------------------
+   HERO TEXT READABILITY
+--------------------------------------------------------- */
+
+.hero-content {
+    color: #ffffff;
+}
+
+.hero h1 {
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 12px
+        rgba(0, 0, 0, 0.30);
+}
+
+.hero h1 span {
+    color: #f3cc78;
+}
+
+.hero-theme {
+    color: #ffffff;
+}
+
+.hero-description {
+    color: #f8f5ed;
+}
+
+.hero-eyebrow {
+    color: #f3cc78;
+}
+
+.hero-meta-item strong {
+    color: #ffffff;
+}
+
+.hero-meta-item span {
+    color: #f5efe1;
+}
+
+
+/* ---------------------------------------------------------
+   REGISTRATION SECTION
+--------------------------------------------------------- */
+
+.registration-section {
+    background: #174d32;
+}
+
+
+/* LEFT SIDE */
+
+.registration-content {
+    color: #ffffff;
+}
+
+.registration-content .section-kicker {
+    color: #f3b83f;
+}
+
+.registration-content h2 {
+    color: #ffffff;
+
+    font-size: clamp(
+        34px,
+        4vw,
+        52px
+    );
+
+    line-height: 1.1;
+}
+
+.registration-content > p {
+    color: #f6f0e4;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* INFORMATION NOTE */
+
+.registration-note {
+    margin-top: 30px;
+
+    padding: 22px 24px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.20
+        );
+
+    border-left:
+        5px solid #e0a52b;
+
+    border-radius: 14px;
+}
+
+.registration-note strong {
+    color: #f3cc78;
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 17px;
+}
+
+.registration-note p {
+    color: #ffffff;
+
+    margin: 0;
+
+    line-height: 1.7;
+}
+
+
+/* ---------------------------------------------------------
+   REGISTRATION FORM CARD
+--------------------------------------------------------- */
+
+.registration-form-card {
+    background: #fffaf0;
+
+    padding: 34px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 16px 45px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+/* LABELS */
+
+.registration-form-card label {
+    display: block;
+
+    color: #153d29;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.registration-form-card label span {
+    color: #b35426;
+}
+
+
+/* INPUTS */
+
+.registration-form-card input,
+.registration-form-card select {
+    width: 100%;
+
+    min-height: 54px;
+
+    padding: 13px 16px;
+
+    background: #ffffff;
+
+    color: #222b25;
+
+    border:
+        1px solid
+        #d7d0bf;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.registration-form-card input::placeholder {
+    color: #7a7a72;
+}
+
+.registration-form-card input:focus,
+.registration-form-card select:focus {
+    border-color: #c98a18;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            224,
+            165,
+            43,
+            0.18
+        );
+}
+
+
+/* FORM SPACING */
+
+.registration-form-card .form-group {
+    margin-bottom: 22px;
+}
+
+
+/* SUBMIT BUTTON */
+
+.registration-form-card .form-submit-btn {
+    width: 100%;
+
+    min-height: 56px;
+
+    background: #e0a52b;
+    color: #102d20;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.registration-form-card .form-submit-btn:hover {
+    background: #edba50;
+
+    transform: translateY(-2px);
+}
+
+
+/* ---------------------------------------------------------
+   SUCCESS AND ERROR MESSAGES
+--------------------------------------------------------- */
+
+.form-message {
+    margin-top: 18px;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ---------------------------------------------------------
+   CONTACT US SECTION
+--------------------------------------------------------- */
+
+.contact-section {
+    background: #fffaf0;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        1.1fr;
+
+    gap: 55px;
+
+    align-items: start;
+}
+
+.contact-content .section-kicker {
+    color: #c98a18;
+}
+
+.contact-content h2 {
+    color: #153d29;
+
+    font-size: clamp(
+        34px,
+        4vw,
+        50px
+    );
+
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    color: #465149;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+.contact-details {
+    display: grid;
+    gap: 18px;
+}
+
+
+.contact-card {
+    background: #ffffff;
+
+    padding: 22px 24px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(
+            21,
+            61,
+            41,
+            0.10
+        );
+
+    box-shadow:
+        0 7px 22px
+        rgba(
+            16,
+            45,
+            32,
+            0.08
+        );
+}
+
+
+.contact-card span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #c98a18;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+
+.contact-card strong,
+.contact-card a {
+    color: #153d29;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.contact-card a:hover {
+    color: #c98a18;
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER
+--------------------------------------------------------- */
+
+.site-footer {
+    background: #102d20;
+    color: #ffffff;
+}
+
+.site-footer strong {
+    color: #f3cc78;
+}
+
+.site-footer p {
+    color: #f4efe5;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE / TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .header-inner {
+        min-height: 78px;
+    }
+
+    .brand-mark {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+
+        font-size: 15px;
+    }
+
+    .brand-text strong {
+        font-size: 17px;
+    }
+
+    .brand-text span {
+        font-size: 15px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .registration-form-card {
+        padding: 26px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .brand-text strong {
+        font-size: 15px;
+    }
+
+    .brand-text span {
+        font-size: 13px;
+    }
+
+    .registration-content h2 {
+        font-size: 34px;
+    }
+
+    .registration-form-card {
+        padding: 20px;
+    }
+
 }
