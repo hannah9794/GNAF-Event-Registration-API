@@ -3,8 +3,7 @@
 The frontend for the Ghana National Food and Agribusiness Fair 2026 Event Registration and Ticketing System is deployed as a static website using Amazon S3.
 
 ### Live Website
-
-[Open the GNAF 2026 Event Registration Website](http://gnaf-2026-event-registration-hannah9794.s3-website-us-east-1.amazonaws.com)
+[Open the GNAF 2026 Event Registration Website](https://dej8i5g4enk4g.cloudfront.net/gnaf-2026-registration/)
 
 ### GitHub Repository
 
